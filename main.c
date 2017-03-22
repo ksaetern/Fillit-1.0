@@ -1,0 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksaetern <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/14 04:23:55 by ksaetern          #+#    #+#             */
+/*   Updated: 2017/03/14 16:28:53 by ksaetern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fillit.h"
+
+void	ft_printmap(char **map)
+{
+	while(*map)
+		ft_putendl(*map++);
+}
+
+int 	ft_error(char *str, int o)
+{
+	ft_putendl(str);
+	return (o);
+}
+
+void	ft_deletelist(t_tetri *tetris)
+{
+	t_tetri		*next;
+
+	while (tetris != NULL)
+	{
+		next = tetris->next;
+		tetris->next = NULL;
+		tetris->prev = NULL;
+		free(tetris);
+		tetris = next;
+	}
+	tetris = NULL;
+}
+
+int		main(int argc, char **argv)
+{
+	int			fd;
+	t_tetri		*tetris;
+	char		**solved;
+
+	if (argc != 2)
+		return (ft_error("usage: ./fillit User_File", 0));
+	printf("starting check\n");
+	fd = open(argv[1], O_RDONLY);
+	if	(fd == -1)
+		return (ft_error("Error: fd == -1",0));
+	tetris = readchecks(fd);
+	if (tetris == NULL)
+		return (ft_error("Error:Firing Blank tetris",0));
+	printf("jumping into solved\n");
+	solved = ft_solved(tetris);	
+	ft_printmap(solved);
+	ft_deletelist(tetris);
+	return (0);
+}
