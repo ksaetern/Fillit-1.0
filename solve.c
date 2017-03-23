@@ -21,9 +21,15 @@ int		ft_rocket2(char **map, t_tetri *tetris, int max)
 {
 	tetris = tetris->prev;
 	ft_remove(map, tetris);
-	if (ft_setvalid(map, tetris, tetris->xcurr + 1, tetris->ycurr + 1) == 1)
+	if (ft_setvalid(map, tetris, tetris->xcurr, tetris->ycurr + 1) == 1)
 	{
-		ft_placepiece(map, tetris, tetris->xcurr + 1, tetris->ycurr + 1);
+		ft_placepiece(map, tetris, tetris->xcurr, tetris->ycurr + 1);
+		if (ft_rocket(map, tetris->next, max))
+			return (1);
+	}
+	else if (ft_setvalid(map, tetris, tetris->xcurr + 1, 0) == 1)
+	{
+		ft_placepiece(map, tetris, tetris->xcurr +1 , 0);
 		if (ft_rocket(map, tetris->next, max))
 			return (1);
 	}
@@ -57,8 +63,8 @@ int		ft_rocket(char **map, t_tetri *tetris, int max)
 		}
 		x++;
 	}
-	if (tetris->letter != 'A')
-		ft_rocket2(map, tetris, max);
+	/*if (tetris->letter != 'A')*/
+	ft_rocket2(map, tetris, max);
 	return (0);
 }
 
