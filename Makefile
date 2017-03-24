@@ -6,7 +6,7 @@
 #    By: ksaetern <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/14 15:41:28 by ksaetern          #+#    #+#              #
-#    Updated: 2017/03/16 18:48:34 by ksaetern         ###   ########.fr        #
+#    Updated: 2017/03/23 17:45:59 by ksaetern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ $(NAME):
 		@$(CC) $(FLAG) $(NAME) $(SRCS)
 
 clean:
-		rm -f $(OBJS)
+		rm -f $(OBJ)
+
 fclean:	clean
 		rm -f $(NAME)
 

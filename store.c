@@ -54,7 +54,6 @@ t_tetri		ft_storexy(char **str, t_tetri *newtetri, int j, int i)
 	}
 	newtetri->ypos[4] = '\0';
 	newtetri->xpos[4] = '\0';
-	printf("%c\n", newtetri->letter);
 	return (*newtetri);
 }
 

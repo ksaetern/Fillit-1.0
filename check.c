@@ -12,14 +12,13 @@
 
 #include "fillit.h"
 
-int		connect_check(char *str)
+int		ft_connect_check(char *str)
 {
 	int		con;
 	int		i;
 
 	i = 0;
 	con = 0;
-	printf("starting connection check\n");
 	while (i <= 20)
 	{
 		if (str[i] == '#')
@@ -41,20 +40,15 @@ int		connect_check(char *str)
 		return (0);
 }
 
-
-int		size_check(char *str, int hash, int y,int x)
+int		ft_size_check(char *str, int hash, int y, int x)
 {
 	int		i;
 
 	i = 0;
-	printf("starting size check\n");
 	while (str[i] != '\0')
 	{
 		if (!(str[i] == '#' || str[i] == '.' || str[i] == '\n'))
-		{
-			printf("str[i] = %c  \naliens", str[i]);
 			return (0);
-		}
 		if (str[i] == '#')
 			hash++;
 		if (str[i] == '.' || str[i] == '#')
@@ -67,18 +61,17 @@ int		size_check(char *str, int hash, int y,int x)
 		}
 		i++;
 	}
-	printf("hash = %d, x rows = %d\n", hash, x);
 	if (hash == 4 && x == 4)
 		return (1);
 	else
 		return (0);
 }
 
-int		validcheck(char *str)
+int		ft_validcheck(char *str)
 {
 	if (str == NULL)
-		return (ft_error("Error: String empty", 0));
-	if (connect_check(str) == 1 && size_check(str, 0, 0, 0) == 1)
+		return (ft_error("error", 0));
+	if (ft_connect_check(str) == 1 && ft_size_check(str, 0, 0, 0) == 1)
 		return (1);
 	else
 		return (0);

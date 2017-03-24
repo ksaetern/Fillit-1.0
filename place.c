@@ -13,9 +13,9 @@
 #include "fillit.h"
 
 void		ft_remove(char **map, t_tetri *tetris)
-{ 
-	int 	x;
-	int 	y;
+{
+	int			x;
+	int			y;
 
 	x = 0;
 	y = 0;
@@ -28,28 +28,29 @@ void		ft_remove(char **map, t_tetri *tetris)
 				map[x][y] = '.';
 			y++;
 		}
-		x++;		
+		x++;
 	}
 }
 
 void		ft_placepiece(char **map, t_tetri *tetris, int x, int y)
 {
 	int				i;
+
 	tetris->xcurr = x;
 	tetris->ycurr = y;
 	i = 3;
 	while (i >= 0)
 	{
 		map[x + tetris->xpos[i]][y + tetris->ypos[i]] = tetris->letter;
-		i--;		
+		i--;
 	}
 }
 
 int			ft_setvalid(char **map, t_tetri *tetris, int xcurr, int ycurr)
 {
-	int		i;
-	int 	j;
-	int		k;
+	int			i;
+	int			j;
+	int			k;
 
 	j = 0;
 	i = 0;
@@ -58,7 +59,7 @@ int			ft_setvalid(char **map, t_tetri *tetris, int xcurr, int ycurr)
 		k = 0;
 		while (map[j][k] != '\0')
 		{
-			if (map[j][k] == '.' && (tetris->xpos[i] + xcurr) == j && 
+			if (map[j][k] == '.' && (tetris->xpos[i] + xcurr) == j &&
 				(tetris->ypos[i] + ycurr) == k)
 				i++;
 			k++;

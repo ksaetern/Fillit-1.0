@@ -26,17 +26,15 @@ int			ft_mapmin(t_tetri *tetri)
 	size = 2;
 	while ((size * size) - (i * 4) < 0)
 		size++;
-	printf("\nminimun size of map = %d x %d \n", size, size);
 	return (size);
 }
 
-char	**ft_mapmaker(int max)
+char		**ft_mapmaker(int max)
 {
 	int		x;
 	int		y;
 	char	**map;
 
-	
 	x = 0;
 	if (!(map = (char **)malloc(sizeof(char *) * (max + 1))))
 		return (NULL);
@@ -51,8 +49,7 @@ char	**ft_mapmaker(int max)
 			map[x][y] = '.';
 			y++;
 		}
-		x++;		
+		x++;
 	}
-	printf("new map done\n");
 	return (map);
 }

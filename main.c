@@ -14,11 +14,11 @@
 
 void	ft_printmap(char **map)
 {
-	while(*map)
+	while (*map)
 		ft_putendl(*map++);
 }
 
-int 	ft_error(char *str, int o)
+int		ft_error(char *str, int o)
 {
 	ft_putendl(str);
 	return (o);
@@ -47,15 +47,13 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (ft_error("usage: ./fillit User_File", 0));
-	printf("starting check\n");
 	fd = open(argv[1], O_RDONLY);
-	if	(fd == -1)
-		return (ft_error("Error: fd == -1",0));
-	tetris = readchecks(fd);
+	if (fd == -1)
+		return (ft_error("error", 0));
+	tetris = ft_readchecks(fd, 0);
 	if (tetris == NULL)
-		return (ft_error("Error:Firing Blank tetris",0));
-	printf("jumping into solved\n");
-	solved = ft_solved(tetris);	
+		return (ft_error("error", 0));
+	solved = ft_solved(tetris);
 	ft_printmap(solved);
 	ft_deletelist(tetris);
 	return (0);
