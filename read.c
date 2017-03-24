@@ -14,7 +14,6 @@
 
 t_tetri		*ft_newlist(t_tetri *newlist)
 {
-	newlist->prev = newlist;
 	if (!(newlist->next = (t_tetri *)malloc(sizeof(t_tetri))))
 		return (0);
 	newlist = newlist->next;

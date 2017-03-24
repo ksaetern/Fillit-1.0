@@ -36,8 +36,6 @@ void		ft_placepiece(char **map, t_tetri *tetris, int x, int y)
 {
 	int				i;
 
-	tetris->xcurr = x;
-	tetris->ycurr = y;
 	i = 3;
 	while (i >= 0)
 	{

@@ -20,8 +20,6 @@
 
 typedef	struct		s_tetri
 {
-	int				xcurr;
-	int				ycurr;
 	int				h;
 	int				w;
 	int				x1;
@@ -55,8 +53,6 @@ void				ft_placepiece(char **map, t_tetri *tetris, int x, int y);
 void				ft_remove(char **map, t_tetri *tetris);
 int					ft_rocket(char **map, t_tetri *tetris, int max);
 int					ft_error(char *str, int o);
-int					ft_rocket2(char **map, t_tetri *tetris, int max);
-int					ft_rocket2r(char **map, t_tetri *tetris, int max);
 int					ft_superrocket(char **map, t_tetri *tetris, int max);
 void				ft_deletelist(t_tetri *tetris);
 
