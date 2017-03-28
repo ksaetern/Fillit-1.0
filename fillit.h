@@ -28,7 +28,6 @@ typedef	struct		s_tetri
 	int				ypos[5];
 	char			letter;
 	struct s_tetri	*next;
-	struct s_tetri	*prev;
 }					t_tetri;
 
 int					ft_connect_check(char *str);

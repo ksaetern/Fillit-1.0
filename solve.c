@@ -27,13 +27,13 @@ int			ft_rocket(char **map, t_tetri *tetris, int max)
 		{
 			while (map[x][y] >= 'A' && map[x][y] <= 'Z')
 				y++;
-			if (ft_setvalid(map, tetris, x, y) == 1)
+			if (ft_setvalid(map, tetris, x, y))
 			{
 				ft_placepiece(map, tetris, x, y);
 				if (ft_rocket(map, tetris->next, max))
 					return (1);
+				ft_remove(map, tetris);
 			}
-			ft_remove(map, tetris);
 			y++;
 		}
 		x++;

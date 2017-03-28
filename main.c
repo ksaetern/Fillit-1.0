@@ -32,7 +32,6 @@ void	ft_deletelist(t_tetri *tetris)
 	{
 		next = tetris->next;
 		tetris->next = NULL;
-		tetris->prev = NULL;
 		free(tetris);
 		tetris = next;
 	}
