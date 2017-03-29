@@ -25,7 +25,7 @@ void		ft_xydistance(t_tetri *newtetri, int j, int k, int i)
 	}
 	else
 	{
-		newtetri->ypos[i] = k - newtetri->y1;
+		newtetri->ypos[i] = k - newtetri->y1;gi
 		newtetri->xpos[i] = j - newtetri->x1;
 		if (newtetri->w < newtetri->ypos[i])
 			newtetri->w = newtetri->ypos[i];
