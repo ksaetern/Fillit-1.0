@@ -60,10 +60,9 @@ t_tetri		ft_storexy(char **str, t_tetri *newtetri, int j, int i)
 t_tetri		*ft_store(char *str, int i, t_tetri *newlist)
 {
 	char		**grid;
-	t_tetri		storedxy;
 
 	newlist->letter = 'A' + i;
 	grid = ft_strsplit(str, '\n');
-	storedxy = ft_storexy(grid, newlist, 0, 0);
+	ft_storexy(grid, newlist, 0, 0);
 	return (*&newlist);
 }
