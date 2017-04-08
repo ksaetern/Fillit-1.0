@@ -21,7 +21,7 @@ void	ft_printmap(char **map)
 		ft_putendl(*map++);
 	while (map[i] != '\0')
 	{
-		free (map[i]);
+		free(map[i]);
 		i++;
 	}
 }
@@ -62,7 +62,7 @@ int		main(int argc, char **argv)
 		return (ft_error("error", 0));
 	solved = ft_solved(tetris);
 	ft_printmap(solved);
-	free (solved);
+	free(solved);
 	ft_deletelist(tetris);
 	return (0);
 }
