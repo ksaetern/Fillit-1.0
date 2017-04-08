@@ -10,34 +10,41 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fillit
+NAME	=	fillit
 
-CC		= gcc
+CC		=	gcc
 
-LIBFT	= libft/
+FLAG	=	-Wall -Wextra -Werror
 
-FLAG	= -Wall -Wextra -Werror -o
+SRCS	= 	main.c \
+	   		read.c \
+	   		check.c \
+	   		store.c \
+			solve.c \
+			map.c \
+			place.c \
+	   		
+OBJ =		${SRCS:.c=.o}
 
-SRCS	= $(LIBFT)libft.a \
-	   			main.c \
-	   			read.c \
-	   			check.c \
-	   			store.c \
-				solve.c \
-				map.c \
-				place.c \
-	   			
-all:	$(NAME)
+INCLUDE	=	-I ./libft/ -L ./libft -lft
 
-$(NAME):
-		@$(CC) $(FLAG) $(NAME) $(SRCS)
+all: $(NAME)
+
+$(OBJ): $(SRCS)
+		@$(CC) $(FLAG) -c $*.c
+
+$(NAME): $(OBJ)
+		@make all -C libft
+		@$(CC) $(FLAG) $(INCLUDE) $(OBJ) -o $(NAME)
 
 clean:
-		rm -f $(OBJ)
+		@make clean -C libft
+		@/bin/rm -f $(OBJ)
 
-fclean:	clean
-		rm -f $(NAME)
+fclean: clean
+		@make fclean -C libft
+		@/bin/rm -f $(NAME)
 
-re:		fclean all
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean
