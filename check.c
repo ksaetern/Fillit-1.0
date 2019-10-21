@@ -12,6 +12,24 @@
 
 #include "fillit.h"
 
+/*
+Each valid tetrimino should a total of 6 or 8 connections.
+connection: for each individual hashtag, it should have hashtag to the left, right, above or below it.
+##
+## has 8 connections, each hashtag has two hashtags connected to it
+all other valid tetrimino has 6
+##
+ ## has 6 connections, first hash has 1 connection, second has 2, third has 2, last one has 1
+
+with respect to edge cases like 'i' being 0 or at the end or first row or last row
+if you are checkin in a string,
++1 check right
+-1 check left
++5 check below
+-5 check above
+
+if easier, def can string split the str
+*/
 int		ft_connect_check(char *str)
 {
 	int		con;
@@ -40,6 +58,8 @@ int		ft_connect_check(char *str)
 		return (0);
 }
 
+
+
 int		ft_size_check(char *str, int hash, int y, int x)
 {
 	int		i;
@@ -48,15 +68,15 @@ int		ft_size_check(char *str, int hash, int y, int x)
 	while (str[i] != '\0')
 	{
 		if (!(str[i] == '#' || str[i] == '.' || str[i] == '\n'))
-			return (0);
+			return (0);// should only contain 1 of 3 characters
 		if (str[i] == '#')
-			hash++;
+			hash++;// total of 4 hashes needed
 		if (str[i] == '.' || str[i] == '#')
-			y++;
-		if (str[i] == '\n')
+			y++;//valid character
+		if (str[i] == '\n')// by the time you read a \n, you should have 4 valid characters
 		{
 			if (y == 4)
-				x++;
+				x++;//you have a valid line
 			y = 0;
 		}
 		i++;

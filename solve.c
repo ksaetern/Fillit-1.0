@@ -12,6 +12,25 @@
 
 #include "fillit.h"
 
+//added for debuggin purpose
+//just to show you the map working and the recursive back tracking
+void testMap(char **map, char letter, char *Message)
+{
+	ft_putendl(Message);
+	ft_putendl(&letter);
+	while (*map)
+		ft_putendl(*map++);
+	ft_putendl("");
+}
+
+/*
+my recursive back tracking
+yeah bad x,y system 
+
+to be explained letter,
+message if you need this
+*/
+
 int			ft_rocket(char **map, t_tetri *tetris, int max)
 {
 	int			x;
@@ -30,9 +49,17 @@ int			ft_rocket(char **map, t_tetri *tetris, int max)
 			if (ft_setvalid(map, tetris, x, y))
 			{
 				ft_placepiece(map, tetris, x, y);
+				//Debug>
+				//debugging area added for your benefit,
+				// uncomment testMaps to see recursive back tracking working
+				//testMap(map, tetris->letter, "Add Piece");
+				//<Debug
 				if (ft_rocket(map, tetris->next, max))
 					return (1);
 				ft_remove(map, tetris);
+				//Debug>
+				//testMap(map, tetris->letter, "Remove Piece");
+				//<Debug
 			}
 			y++;
 		}
@@ -46,10 +73,12 @@ char		**ft_solved(t_tetri *tetris)
 	char		**map;
 	int			max;
 
-	max = ft_mapmin(tetris);
-	map = ft_mapmaker(max);
+	ft_putendl("In solved");
+	max = ft_mapmin(tetris);//map.c
+	map = ft_mapmaker(max);//map.c
 	while (ft_rocket(map, tetris, max) != 1)
 	{
+		//ft_putendl("remake");
 		free(map);
 		max++;
 		map = ft_mapmaker(max);

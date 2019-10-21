@@ -13,6 +13,7 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <sys/stat.h>
@@ -23,8 +24,8 @@ typedef	struct		s_tetri
 	int				w;
 	int				x1;
 	int				y1;
-	int				xpos[5];
-	int				ypos[5];
+	int				xpos[4];
+	int				ypos[4];
 	char			letter;
 	struct s_tetri	*next;
 }					t_tetri;

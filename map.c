@@ -12,6 +12,28 @@
 
 #include "fillit.h"
 
+
+/*
+start with a 2x2
+because 1 tetrimino could be 
+##
+##
+
+keep increasing size until you have the minimum sized map to fit your tetrimino
+
+4 square tetriminos
+
+####
+####
+####
+####
+
+at minimum need 4x4 2d array
+16 spots to fill it up
+
+
+
+*/
 int			ft_mapmin(t_tetri *tetri)
 {
 	int		size;
@@ -29,6 +51,7 @@ int			ft_mapmin(t_tetri *tetri)
 	return (size);
 }
 
+// make your 2d array and fill it up
 char		**ft_mapmaker(int max)
 {
 	int		x;

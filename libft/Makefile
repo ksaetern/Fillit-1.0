@@ -47,15 +47,15 @@ OBJS =	ft_strcmp.o ft_atoi.o ft_isdigit.o ft_isalpha.o ft_isalnum.o \
 all:	$(NAME)
 
 $(NAME):
-		$(FLAGS) $(SRCS) -I $(INC)
-		ar rc $(NAME) $(OBJS)
-		ranlib $(NAME)
+		@$(FLAGS) $(SRCS) -I $(INC)
+		@ar rc $(NAME) $(OBJS)
+		@ranlib $(NAME)
 
 clean:
-		rm -f $(OBJS)
+		@rm -f $(OBJS)
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re:		fclean all
 

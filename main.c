@@ -17,6 +17,8 @@ void	ft_printmap(char **map)
 	int		i;
 
 	i = 0;
+	ft_putendl("Solution!!!");
+	
 	while (*map)
 		ft_putendl(*map++);
 	while (map[i] != '\0')
@@ -46,6 +48,10 @@ void	ft_deletelist(t_tetri *tetris)
 	tetris = NULL;
 }
 
+
+//Big mistake i did was i started the project with agreeing to my partner
+//doing x,y coordinate system instead of y,x
+//all future projects will be in y,x
 int		main(int argc, char **argv)
 {
 	int			fd;
@@ -57,10 +63,10 @@ int		main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (ft_error("error", 0));
-	tetris = ft_readchecks(fd, 0);
+	tetris = ft_readchecks(fd, 0);//go to read.c
 	if (tetris == NULL)
 		return (ft_error("error", 0));
-	solved = ft_solved(tetris);
+	solved = ft_solved(tetris);// go to solve.c
 	ft_printmap(solved);
 	free(solved);
 	ft_deletelist(tetris);
